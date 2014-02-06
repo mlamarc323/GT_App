@@ -1,0 +1,29 @@
+﻿@model GT_App.Models.Course
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Course</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Facility.Facility_Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Facility.Facility_Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Course_Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Course_Name)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.CourseId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,45 @@
+﻿@model GT_App.Models.Course
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Course</legend>
+
+        @Html.HiddenFor(model => model.CourseId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FacilityId, "Facility")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("FacilityId", String.Empty)
+            @Html.ValidationMessageFor(model => model.FacilityId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Course_Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Course_Name)
+            @Html.ValidationMessageFor(model => model.Course_Name)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

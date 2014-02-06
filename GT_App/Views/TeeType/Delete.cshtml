@@ -1,0 +1,60 @@
+﻿@model GT_App.Models.TeeType
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>TeeType</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FacilityId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FacilityId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CourseId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CourseId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Slope)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Slope)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Rating)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Rating)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Gender)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Gender)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

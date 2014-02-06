@@ -1,0 +1,101 @@
+﻿@model GT_App.Models.Hole
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Hole</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FacilityId)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("FacilityId", string.Empty)
+            @Html.ValidationMessageFor(model => model.FacilityId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CourseId, "Course")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("CourseId", String.Empty)
+            @Html.ValidationMessageFor(model => model.CourseId)
+        </div>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TeeTypeId, "TeeType")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("TeeTypeId", String.Empty)
+            @Html.ValidationMessageFor(model => model.TeeTypeId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Hole_Num)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Hole_Num)
+            @Html.ValidationMessageFor(model => model.Hole_Num)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Yardage)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Yardage)
+            @Html.ValidationMessageFor(model => model.Yardage)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Par)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Par)
+            @Html.ValidationMessageFor(model => model.Par)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Handicap)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Handicap)
+            @Html.ValidationMessageFor(model => model.Handicap)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script src="~/Scripts/Hole.js"></script>
+<script type="text/javascript">
+    
+
+    $(function () {
+
+        FillFacilityDropdown();
+        $("#FacilityId").empty();
+        $("#CourseId").empty();
+        $("#TeeTypeId").empty();
+        
+        $('#FacilityId').change(FillCourseDropdown);
+        $('#CourseId').change(FillTeeTypeDropdown);
+
+    });
+
+</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

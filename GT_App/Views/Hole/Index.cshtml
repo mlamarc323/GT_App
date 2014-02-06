@@ -1,0 +1,72 @@
+﻿@model IEnumerable<GT_App.Models.Hole>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New Tee Type", "Create")
+</p>
+<p>
+    @Html.ActionLink("Create New Hole", "Create", "Hole")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FacilityId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TeeType.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hole_Num)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Yardage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Par)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Handicap)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FacilityId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CourseId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TeeType.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hole_Num)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Yardage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Par)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Handicap)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.HoleId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.HoleId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.HoleId })
+        </td>
+    </tr>
+}
+
+</table>

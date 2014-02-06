@@ -1,0 +1,144 @@
+﻿@model GT_App.Models.RoundDetail
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>RoundDetail</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RoundId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RoundId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Golfer.First_Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Golfer.First_Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Facility.Facility_Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Facility.Facility_Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Course.Course_Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Course.Course_Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TeeType.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TeeType.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Hole.HoleId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Hole.HoleId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Differential)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Differential)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Date)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Score)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Score)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Putts)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Putts)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GIR)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GIR)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FIR)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FIR)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Up_And_Down)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Up_And_Down)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Par_Save)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Par_Save)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Sand_Save)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Sand_Save)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Driving_Distince)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Driving_Distince)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Proximity)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Proximity)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Green_Fee)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Green_Fee)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

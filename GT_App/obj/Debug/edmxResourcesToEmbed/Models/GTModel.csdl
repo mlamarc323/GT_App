@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GTModel1" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="GolfTrackerEntities2" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Courses" EntityType="GTModel1.Course" />
+    <EntitySet Name="Facilities" EntityType="GTModel1.Facility" />
+    <EntitySet Name="Golfers" EntityType="GTModel1.Golfer" />
+    <EntitySet Name="Holes" EntityType="GTModel1.Hole" />
+    <EntitySet Name="RoundDetails" EntityType="GTModel1.RoundDetail" />
+    <EntitySet Name="TeeTypes" EntityType="GTModel1.TeeType" />
+    <AssociationSet Name="FK_Course_Facility" Association="GTModel1.FK_Course_Facility">
+      <End Role="Facility" EntitySet="Facilities" />
+      <End Role="Course" EntitySet="Courses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoundDetail_Course" Association="GTModel1.FK_RoundDetail_Course">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="RoundDetail" EntitySet="RoundDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TeeType_Course" Association="GTModel1.FK_TeeType_Course">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="TeeType" EntitySet="TeeTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoundDetail_Facility" Association="GTModel1.FK_RoundDetail_Facility">
+      <End Role="Facility" EntitySet="Facilities" />
+      <End Role="RoundDetail" EntitySet="RoundDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoundDetail_Golfer" Association="GTModel1.FK_RoundDetail_Golfer">
+      <End Role="Golfer" EntitySet="Golfers" />
+      <End Role="RoundDetail" EntitySet="RoundDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoundDetail_Hole" Association="GTModel1.FK_RoundDetail_Hole">
+      <End Role="Hole" EntitySet="Holes" />
+      <End Role="RoundDetail" EntitySet="RoundDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TeeType_Hole" Association="GTModel1.FK_TeeType_Hole">
+      <End Role="TeeType" EntitySet="TeeTypes" />
+      <End Role="Hole" EntitySet="Holes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoundDetail_TeeType" Association="GTModel1.FK_RoundDetail_TeeType">
+      <End Role="TeeType" EntitySet="TeeTypes" />
+      <End Role="RoundDetail" EntitySet="RoundDetails" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="CourseId" />
+    </Key>
+    <Property Name="CourseId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="FacilityId" Type="Int32" Nullable="false" />
+    <Property Name="Course_Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Facility" Relationship="GTModel1.FK_Course_Facility" FromRole="Course" ToRole="Facility" />
+    <NavigationProperty Name="RoundDetails" Relationship="GTModel1.FK_RoundDetail_Course" FromRole="Course" ToRole="RoundDetail" />
+    <NavigationProperty Name="TeeTypes" Relationship="GTModel1.FK_TeeType_Course" FromRole="Course" ToRole="TeeType" />
+  </EntityType>
+  <EntityType Name="Facility">
+    <Key>
+      <PropertyRef Name="FacilityId" />
+    </Key>
+    <Property Name="FacilityId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Facility_Name" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="Address" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="City" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="State" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="Zip" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="Phone" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Courses" Relationship="GTModel1.FK_Course_Facility" FromRole="Facility" ToRole="Course" />
+    <NavigationProperty Name="RoundDetails" Relationship="GTModel1.FK_RoundDetail_Facility" FromRole="Facility" ToRole="RoundDetail" />
+  </EntityType>
+  <EntityType Name="Golfer">
+    <Key>
+      <PropertyRef Name="GolferId" />
+    </Key>
+    <Property Name="GolferId" Type="Int32" Nullable="false" />
+    <Property Name="First_Name" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="Last_Name" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="Address" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="City" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="State" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="Zip" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="Phone" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="Handicap_Index" Type="Decimal" Precision="18" Scale="1" />
+    <NavigationProperty Name="RoundDetails" Relationship="GTModel1.FK_RoundDetail_Golfer" FromRole="Golfer" ToRole="RoundDetail" />
+  </EntityType>
+  <EntityType Name="Hole">
+    <Key>
+      <PropertyRef Name="HoleId" />
+    </Key>
+    <Property Name="HoleId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="FacilityId" Type="Int32" Nullable="false" />
+    <Property Name="CourseId" Type="Int32" Nullable="false" />
+    <Property Name="TeeTypeId" Type="Int32" Nullable="false" />
+    <Property Name="Hole_Num" Type="Int32" Nullable="false" />
+    <Property Name="Yardage" Type="Int32" Nullable="false" />
+    <Property Name="Par" Type="Byte" Nullable="false" />
+    <Property Name="Handicap" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="RoundDetails" Relationship="GTModel1.FK_RoundDetail_Hole" FromRole="Hole" ToRole="RoundDetail" />
+    <NavigationProperty Name="TeeType" Relationship="GTModel1.FK_TeeType_Hole" FromRole="Hole" ToRole="TeeType" />
+  </EntityType>
+  <EntityType Name="RoundDetail">
+    <Key>
+      <PropertyRef Name="RoundId" />
+    </Key>
+    <Property Name="RoundId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="GolferId" Type="Int32" Nullable="false" />
+    <Property Name="FacilityId" Type="Int32" Nullable="false" />
+    <Property Name="CourseId" Type="Int32" Nullable="false" />
+    <Property Name="TeeTypeId" Type="Int32" Nullable="false" />
+    <Property Name="HoleId" Type="Int32" Nullable="false" />
+    <Property Name="Differential" Type="Decimal" Nullable="false" Precision="18" Scale="1" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="Score" Type="Byte" Nullable="false" />
+    <Property Name="Putts" Type="Byte" />
+    <Property Name="GIR" Type="Boolean" />
+    <Property Name="FIR" Type="Boolean" />
+    <Property Name="Up_And_Down" Type="Boolean" />
+    <Property Name="Par_Save" Type="Boolean" />
+    <Property Name="Sand_Save" Type="Boolean" />
+    <Property Name="Driving_Distince" Type="Int16" />
+    <Property Name="Proximity" Type="Int32" />
+    <Property Name="Green_Fee" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="Course" Relationship="GTModel1.FK_RoundDetail_Course" FromRole="RoundDetail" ToRole="Course" />
+    <NavigationProperty Name="Facility" Relationship="GTModel1.FK_RoundDetail_Facility" FromRole="RoundDetail" ToRole="Facility" />
+    <NavigationProperty Name="Golfer" Relationship="GTModel1.FK_RoundDetail_Golfer" FromRole="RoundDetail" ToRole="Golfer" />
+    <NavigationProperty Name="Hole" Relationship="GTModel1.FK_RoundDetail_Hole" FromRole="RoundDetail" ToRole="Hole" />
+    <NavigationProperty Name="TeeType" Relationship="GTModel1.FK_RoundDetail_TeeType" FromRole="RoundDetail" ToRole="TeeType" />
+  </EntityType>
+  <EntityType Name="TeeType">
+    <Key>
+      <PropertyRef Name="TeeTypeId" />
+    </Key>
+    <Property Name="TeeTypeId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="FacilityId" Type="Int32" Nullable="false" />
+    <Property Name="CourseId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="Slope" Type="Int32" />
+    <Property Name="Rating" Type="Decimal" Precision="10" Scale="1" />
+    <Property Name="Gender" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+    <NavigationProperty Name="Course" Relationship="GTModel1.FK_TeeType_Course" FromRole="TeeType" ToRole="Course" />
+    <NavigationProperty Name="Holes" Relationship="GTModel1.FK_TeeType_Hole" FromRole="TeeType" ToRole="Hole" />
+    <NavigationProperty Name="RoundDetails" Relationship="GTModel1.FK_RoundDetail_TeeType" FromRole="TeeType" ToRole="RoundDetail" />
+  </EntityType>
+  <Association Name="FK_Course_Facility">
+    <End Role="Facility" Type="GTModel1.Facility" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Course" Type="GTModel1.Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Facility">
+        <PropertyRef Name="FacilityId" />
+      </Principal>
+      <Dependent Role="Course">
+        <PropertyRef Name="FacilityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoundDetail_Course">
+    <End Role="Course" Type="GTModel1.Course" Multiplicity="1" />
+    <End Role="RoundDetail" Type="GTModel1.RoundDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="CourseId" />
+      </Principal>
+      <Dependent Role="RoundDetail">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TeeType_Course">
+    <End Role="Course" Type="GTModel1.Course" Multiplicity="1" />
+    <End Role="TeeType" Type="GTModel1.TeeType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="CourseId" />
+      </Principal>
+      <Dependent Role="TeeType">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoundDetail_Facility">
+    <End Role="Facility" Type="GTModel1.Facility" Multiplicity="1" />
+    <End Role="RoundDetail" Type="GTModel1.RoundDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Facility">
+        <PropertyRef Name="FacilityId" />
+      </Principal>
+      <Dependent Role="RoundDetail">
+        <PropertyRef Name="FacilityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoundDetail_Golfer">
+    <End Role="Golfer" Type="GTModel1.Golfer" Multiplicity="1" />
+    <End Role="RoundDetail" Type="GTModel1.RoundDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Golfer">
+        <PropertyRef Name="GolferId" />
+      </Principal>
+      <Dependent Role="RoundDetail">
+        <PropertyRef Name="GolferId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoundDetail_Hole">
+    <End Role="Hole" Type="GTModel1.Hole" Multiplicity="1" />
+    <End Role="RoundDetail" Type="GTModel1.RoundDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hole">
+        <PropertyRef Name="HoleId" />
+      </Principal>
+      <Dependent Role="RoundDetail">
+        <PropertyRef Name="HoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TeeType_Hole">
+    <End Role="TeeType" Type="GTModel1.TeeType" Multiplicity="1" />
+    <End Role="Hole" Type="GTModel1.Hole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TeeType">
+        <PropertyRef Name="TeeTypeId" />
+      </Principal>
+      <Dependent Role="Hole">
+        <PropertyRef Name="TeeTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoundDetail_TeeType">
+    <End Role="TeeType" Type="GTModel1.TeeType" Multiplicity="1" />
+    <End Role="RoundDetail" Type="GTModel1.RoundDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TeeType">
+        <PropertyRef Name="TeeTypeId" />
+      </Principal>
+      <Dependent Role="RoundDetail">
+        <PropertyRef Name="TeeTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,135 @@
+﻿@model IEnumerable<GT_App.Models.RoundDetail>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RoundId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Golfer.First_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Facility.Facility_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Course.Course_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TeeType.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hole.HoleId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Differential)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Score)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Putts)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GIR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FIR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Up_And_Down)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Par_Save)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sand_Save)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Driving_Distince)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Proximity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Green_Fee)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoundId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Golfer.First_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Facility.Facility_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Course.Course_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TeeType.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hole.HoleId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Differential)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Score)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Putts)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GIR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FIR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Up_And_Down)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Par_Save)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sand_Save)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Driving_Distince)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Proximity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Green_Fee)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

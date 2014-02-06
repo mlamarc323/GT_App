@@ -1,0 +1,171 @@
+﻿@model GT_App.Models.RoundDetail
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>RoundDetail</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RoundId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RoundId)
+            @Html.ValidationMessageFor(model => model.RoundId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GolferId, "Golfer")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("GolferId", String.Empty)
+            @Html.ValidationMessageFor(model => model.GolferId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FacilityId, "Facility")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("FacilityId", String.Empty)
+            @Html.ValidationMessageFor(model => model.FacilityId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CourseId, "Course")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("CourseId", String.Empty)
+            @Html.ValidationMessageFor(model => model.CourseId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TeeTypeId, "TeeType")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("TeeTypeId", String.Empty)
+            @Html.ValidationMessageFor(model => model.TeeTypeId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HoleId, "Hole")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("HoleId", String.Empty)
+            @Html.ValidationMessageFor(model => model.HoleId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Differential)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Differential)
+            @Html.ValidationMessageFor(model => model.Differential)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Date)
+            @Html.ValidationMessageFor(model => model.Date)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Score)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Score)
+            @Html.ValidationMessageFor(model => model.Score)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Putts)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Putts)
+            @Html.ValidationMessageFor(model => model.Putts)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GIR)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GIR)
+            @Html.ValidationMessageFor(model => model.GIR)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FIR)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FIR)
+            @Html.ValidationMessageFor(model => model.FIR)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Up_And_Down)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Up_And_Down)
+            @Html.ValidationMessageFor(model => model.Up_And_Down)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Par_Save)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Par_Save)
+            @Html.ValidationMessageFor(model => model.Par_Save)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Sand_Save)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Sand_Save)
+            @Html.ValidationMessageFor(model => model.Sand_Save)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Driving_Distince)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Driving_Distince)
+            @Html.ValidationMessageFor(model => model.Driving_Distince)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Proximity)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Proximity)
+            @Html.ValidationMessageFor(model => model.Proximity)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Green_Fee)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Green_Fee)
+            @Html.ValidationMessageFor(model => model.Green_Fee)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

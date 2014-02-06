@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GT_AppDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="GT_AppDBEntities3" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Courses" EntityType="GT_AppDBModel.Course" />
+    <EntitySet Name="Facilities" EntityType="GT_AppDBModel.Facility" />
+    <EntitySet Name="Golfers" EntityType="GT_AppDBModel.Golfer" />
+    <EntitySet Name="Holes" EntityType="GT_AppDBModel.Hole" />
+    <EntitySet Name="RoundDetails" EntityType="GT_AppDBModel.RoundDetail" />
+    <EntitySet Name="TeeTypes" EntityType="GT_AppDBModel.TeeType" />
+    <AssociationSet Name="Course_Facility" Association="GT_AppDBModel.Course_Facility">
+      <End Role="Facility" EntitySet="Facilities" />
+      <End Role="Course" EntitySet="Courses" />
+    </AssociationSet>
+    <AssociationSet Name="Hole_Course" Association="GT_AppDBModel.Hole_Course">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="Hole" EntitySet="Holes" />
+    </AssociationSet>
+    <AssociationSet Name="Hole_TeeType" Association="GT_AppDBModel.Hole_TeeType">
+      <End Role="TeeType" EntitySet="TeeTypes" />
+      <End Role="Hole" EntitySet="Holes" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="CourseId" />
+    </Key>
+    <Property Name="FacilityId" Type="Int32" Nullable="false" />
+    <Property Name="Course_Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CourseId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Facility" Relationship="GT_AppDBModel.Course_Facility" FromRole="Course" ToRole="Facility" />
+    <NavigationProperty Name="Holes" Relationship="GT_AppDBModel.Hole_Course" FromRole="Course" ToRole="Hole" />
+  </EntityType>
+  <EntityType Name="Facility">
+    <Key>
+      <PropertyRef Name="FacilityId" />
+    </Key>
+    <Property Name="Facility_Name" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="Address" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="City" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="State" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="Zip" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="Phone" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="FacilityId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Courses" Relationship="GT_AppDBModel.Course_Facility" FromRole="Facility" ToRole="Course" />
+  </EntityType>
+  <EntityType Name="Golfer">
+    <Key>
+      <PropertyRef Name="GolferId" />
+    </Key>
+    <Property Name="Firstt_Name" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="Last_Name" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="Address" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="City" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="State" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="Zip" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="Phone" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Handicap_Index" Type="Double" />
+    <Property Name="GolferId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="Hole">
+    <Key>
+      <PropertyRef Name="HoleId" />
+    </Key>
+    <Property Name="FacilityId" Type="Int32" Nullable="false" />
+    <Property Name="CourseId" Type="Int32" Nullable="false" />
+    <Property Name="TeeTypeId" Type="Int32" Nullable="false" />
+    <Property Name="Hole_Num" Type="Int16" Nullable="false" />
+    <Property Name="Yardage" Type="Int32" Nullable="false" />
+    <Property Name="Par" Type="Byte" Nullable="false" />
+    <Property Name="Handicap" Type="Int16" Nullable="false" />
+    <Property Name="HoleId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Course" Relationship="GT_AppDBModel.Hole_Course" FromRole="Hole" ToRole="Course" />
+    <NavigationProperty Name="TeeType" Relationship="GT_AppDBModel.Hole_TeeType" FromRole="Hole" ToRole="TeeType" />
+  </EntityType>
+  <EntityType Name="RoundDetail">
+    <Key>
+      <PropertyRef Name="RoundId" />
+    </Key>
+    <Property Name="GolferId" Type="Int32" Nullable="false" />
+    <Property Name="FacilityId" Type="Int32" Nullable="false" />
+    <Property Name="CourseId" Type="Int32" Nullable="false" />
+    <Property Name="TeeTypeId" Type="Int32" Nullable="false" />
+    <Property Name="HoleId" Type="Int32" Nullable="false" />
+    <Property Name="Differential" Type="Double" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="Score" Type="Int16" Nullable="false" />
+    <Property Name="Putts" Type="Byte" Nullable="false" />
+    <Property Name="GIR" Type="Boolean" />
+    <Property Name="FIR" Type="Boolean" />
+    <Property Name="Up_And_Down" Type="Byte" />
+    <Property Name="Par_Save" Type="Byte" />
+    <Property Name="Sand_Save" Type="Byte" />
+    <Property Name="Driving_Distance" Type="Int32" />
+    <Property Name="Proximity" Type="Int32" />
+    <Property Name="Green_Fee" Type="Double" />
+    <Property Name="RoundId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="TeeType">
+    <Key>
+      <PropertyRef Name="TeeTypeId" />
+    </Key>
+    <Property Name="FacilityId" Type="Int32" Nullable="false" />
+    <Property Name="CourseId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="Slope" Type="Int32" />
+    <Property Name="Rating" Type="Double" />
+    <Property Name="Gender" Type="String" MaxLength="1" Unicode="true" FixedLength="true" />
+    <Property Name="TeeTypeId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Holes" Relationship="GT_AppDBModel.Hole_TeeType" FromRole="TeeType" ToRole="Hole" />
+  </EntityType>
+  <Association Name="Course_Facility">
+    <End Role="Facility" Type="GT_AppDBModel.Facility" Multiplicity="1" />
+    <End Role="Course" Type="GT_AppDBModel.Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Facility">
+        <PropertyRef Name="FacilityId" />
+      </Principal>
+      <Dependent Role="Course">
+        <PropertyRef Name="FacilityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Hole_Course">
+    <End Role="Course" Type="GT_AppDBModel.Course" Multiplicity="1" />
+    <End Role="Hole" Type="GT_AppDBModel.Hole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="CourseId" />
+      </Principal>
+      <Dependent Role="Hole">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Hole_TeeType">
+    <End Role="TeeType" Type="GT_AppDBModel.TeeType" Multiplicity="1" />
+    <End Role="Hole" Type="GT_AppDBModel.Hole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TeeType">
+        <PropertyRef Name="TeeTypeId" />
+      </Principal>
+      <Dependent Role="Hole">
+        <PropertyRef Name="TeeTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

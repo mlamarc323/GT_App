@@ -1,0 +1,4 @@
+<Modules>
+  <Module PersistentId="C5A90A89-4FA1-40B5-8A33-F63B1138192E" ModuleId="GT_App" />
+  <Module PersistentId="E64629DC-BE47-44FD-AB30-B9EFB9B5EB7E" ModuleId="GT_App.Test" />
+</Modules>

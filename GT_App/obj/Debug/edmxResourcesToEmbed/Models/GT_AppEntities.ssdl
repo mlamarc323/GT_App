@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GT_AppDBModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="GT_AppDBModelStoreContainer">
+    <EntitySet Name="Course" EntityType="GT_AppDBModel.Store.Course" store:Type="Tables" />
+    <EntitySet Name="Facility" EntityType="GT_AppDBModel.Store.Facility" store:Type="Tables" />
+    <EntitySet Name="Golfer" EntityType="GT_AppDBModel.Store.Golfer" store:Type="Tables" />
+    <EntitySet Name="Hole" EntityType="GT_AppDBModel.Store.Hole" store:Type="Tables" />
+    <EntitySet Name="RoundDetail" EntityType="GT_AppDBModel.Store.RoundDetail" store:Type="Tables" />
+    <EntitySet Name="TeeType" EntityType="GT_AppDBModel.Store.TeeType" store:Type="Tables" />
+    <AssociationSet Name="Course_Facility" Association="GT_AppDBModel.Store.Course_Facility">
+      <End Role="Facility" EntitySet="Facility" />
+      <End Role="Course" EntitySet="Course" />
+    </AssociationSet>
+    <AssociationSet Name="Hole_Course" Association="GT_AppDBModel.Store.Hole_Course">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="Hole" EntitySet="Hole" />
+    </AssociationSet>
+    <AssociationSet Name="Hole_TeeType" Association="GT_AppDBModel.Store.Hole_TeeType">
+      <End Role="TeeType" EntitySet="TeeType" />
+      <End Role="Hole" EntitySet="Hole" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="CourseId" />
+    </Key>
+    <Property Name="FacilityId" Type="int" Nullable="false" />
+    <Property Name="Course_Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="CourseId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="Facility">
+    <Key>
+      <PropertyRef Name="FacilityId" />
+    </Key>
+    <Property Name="Facility_Name" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="Address" Type="nvarchar" MaxLength="30" />
+    <Property Name="City" Type="nvarchar" MaxLength="30" />
+    <Property Name="State" Type="nvarchar" MaxLength="30" />
+    <Property Name="Zip" Type="nvarchar" MaxLength="10" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="10" />
+    <Property Name="FacilityId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="Golfer">
+    <Key>
+      <PropertyRef Name="GolferId" />
+    </Key>
+    <Property Name="Firstt_Name" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="Last_Name" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="Address" Type="nvarchar" MaxLength="30" />
+    <Property Name="City" Type="nvarchar" MaxLength="30" />
+    <Property Name="State" Type="nvarchar" MaxLength="30" />
+    <Property Name="Zip" Type="nvarchar" MaxLength="10" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="30" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Handicap_Index" Type="float" />
+    <Property Name="GolferId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="Hole">
+    <Key>
+      <PropertyRef Name="HoleId" />
+    </Key>
+    <Property Name="FacilityId" Type="int" Nullable="false" />
+    <Property Name="CourseId" Type="int" Nullable="false" />
+    <Property Name="TeeTypeId" Type="int" Nullable="false" />
+    <Property Name="Hole_Num" Type="smallint" Nullable="false" />
+    <Property Name="Yardage" Type="int" Nullable="false" />
+    <Property Name="Par" Type="tinyint" Nullable="false" />
+    <Property Name="Handicap" Type="smallint" Nullable="false" />
+    <Property Name="HoleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="RoundDetail">
+    <Key>
+      <PropertyRef Name="RoundId" />
+    </Key>
+    <Property Name="GolferId" Type="int" Nullable="false" />
+    <Property Name="FacilityId" Type="int" Nullable="false" />
+    <Property Name="CourseId" Type="int" Nullable="false" />
+    <Property Name="TeeTypeId" Type="int" Nullable="false" />
+    <Property Name="HoleId" Type="int" Nullable="false" />
+    <Property Name="Differential" Type="float" Nullable="false" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="Score" Type="smallint" Nullable="false" />
+    <Property Name="Putts" Type="tinyint" Nullable="false" />
+    <Property Name="GIR" Type="bit" />
+    <Property Name="FIR" Type="bit" />
+    <Property Name="Up_And_Down" Type="tinyint" />
+    <Property Name="Par_Save" Type="tinyint" />
+    <Property Name="Sand_Save" Type="tinyint" />
+    <Property Name="Driving_Distance" Type="int" />
+    <Property Name="Proximity" Type="int" />
+    <Property Name="Green_Fee" Type="float" />
+    <Property Name="RoundId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="TeeType">
+    <Key>
+      <PropertyRef Name="TeeTypeId" />
+    </Key>
+    <Property Name="FacilityId" Type="int" Nullable="false" />
+    <Property Name="CourseId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Slope" Type="int" />
+    <Property Name="Rating" Type="float" />
+    <Property Name="Gender" Type="nchar" MaxLength="1" />
+    <Property Name="TeeTypeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <Association Name="Course_Facility">
+    <End Role="Facility" Type="GT_AppDBModel.Store.Facility" Multiplicity="1" />
+    <End Role="Course" Type="GT_AppDBModel.Store.Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Facility">
+        <PropertyRef Name="FacilityId" />
+      </Principal>
+      <Dependent Role="Course">
+        <PropertyRef Name="FacilityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Hole_Course">
+    <End Role="Course" Type="GT_AppDBModel.Store.Course" Multiplicity="1" />
+    <End Role="Hole" Type="GT_AppDBModel.Store.Hole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="CourseId" />
+      </Principal>
+      <Dependent Role="Hole">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Hole_TeeType">
+    <End Role="TeeType" Type="GT_AppDBModel.Store.TeeType" Multiplicity="1" />
+    <End Role="Hole" Type="GT_AppDBModel.Store.Hole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TeeType">
+        <PropertyRef Name="TeeTypeId" />
+      </Principal>
+      <Dependent Role="Hole">
+        <PropertyRef Name="TeeTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

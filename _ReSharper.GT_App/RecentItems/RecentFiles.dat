@@ -1,0 +1,38 @@
+﻿<RecentFiles>
+  <RecentFiles>
+    <File id="C5A90A89-4FA1-40B5-8A33-F63B1138192E/d:ViewModel/f:RoundDetailViewModel.cs" caret="697" fromTop="24" />
+    <File id="C5A90A89-4FA1-40B5-8A33-F63B1138192E/d:App_Start/f:WebApiConfig.cs" caret="0" fromTop="0" />
+    <File id="C5A90A89-4FA1-40B5-8A33-F63B1138192E/d:App_Start/f:RouteConfig.cs" caret="0" fromTop="0" />
+    <File id="C5A90A89-4FA1-40B5-8A33-F63B1138192E/d:App_Start/f:AuthConfig.cs" caret="0" fromTop="0" />
+    <File id="C5A90A89-4FA1-40B5-8A33-F63B1138192E/d:App_Start/f:FilterConfig.cs" caret="0" fromTop="0" />
+    <File id="C5A90A89-4FA1-40B5-8A33-F63B1138192E/d:Filters/f:InitializeSimpleMembershipAttribute.cs" caret="591" fromTop="16" />
+    <File id="C5A90A89-4FA1-40B5-8A33-F63B1138192E/d:Controllers/f:HomeController.cs" caret="0" fromTop="0" />
+    <File id="C5A90A89-4FA1-40B5-8A33-F63B1138192E/d:Views/f:Web.config" caret="0" fromTop="0" />
+    <File id="C5A90A89-4FA1-40B5-8A33-F63B1138192E/d:Controllers/f:GolferController.cs" caret="331" fromTop="13" />
+    <File id="C5A90A89-4FA1-40B5-8A33-F63B1138192E/d:Controllers/f:FacilityController.cs" caret="333" fromTop="13" />
+    <File id="C5A90A89-4FA1-40B5-8A33-F63B1138192E/d:Controllers/f:HoleController.cs" caret="329" fromTop="13" />
+    <File id="C5A90A89-4FA1-40B5-8A33-F63B1138192E/d:Controllers/f:AccountController.cs" caret="195" fromTop="0" />
+    <File id="C5A90A89-4FA1-40B5-8A33-F63B1138192E/d:Views/d:Shared/f:_Layout.cshtml" caret="1808" fromTop="37" />
+    <File id="C5A90A89-4FA1-40B5-8A33-F63B1138192E/d:Controllers/f:CourseController.cs" caret="2047" fromTop="0" />
+    <File id="C5A90A89-4FA1-40B5-8A33-F63B1138192E/d:Views/d:Course/f:Create.cshtml" caret="374" fromTop="18" />
+    <File id="C5A90A89-4FA1-40B5-8A33-F63B1138192E/d:App_Start/f:BundleConfig.cs" caret="1715" fromTop="35" />
+    <File id="C5A90A89-4FA1-40B5-8A33-F63B1138192E/f:Web.config" caret="4114" fromTop="6" />
+    <File id="C5A90A89-4FA1-40B5-8A33-F63B1138192E/d:Views/d:TeeType/f:Create.cshtml" caret="691" fromTop="26" />
+    <File id="C5A90A89-4FA1-40B5-8A33-F63B1138192E/d:Controllers/f:TeeTypeController.cs" caret="1594" fromTop="0" />
+    <File id="C5A90A89-4FA1-40B5-8A33-F63B1138192E/d:Controllers/f:RoundDetailController.cs" caret="0" fromTop="0" />
+    <File id="C5A90A89-4FA1-40B5-8A33-F63B1138192E/d:Views/d:RoundDetail/f:Create.cshtml" caret="10565" fromTop="9" />
+  </RecentFiles>
+  <RecentEdits>
+    <File id="C5A90A89-4FA1-40B5-8A33-F63B1138192E/d:Views/d:Shared/f:_Layout.cshtml" caret="381" fromTop="8" />
+    <File id="C5A90A89-4FA1-40B5-8A33-F63B1138192E/d:Filters/f:InitializeSimpleMembershipAttribute.cs" caret="1252" fromTop="33" />
+    <File id="C5A90A89-4FA1-40B5-8A33-F63B1138192E/d:Views/d:RoundDetail/f:Create.cshtml" caret="680" fromTop="20" />
+    <File id="C5A90A89-4FA1-40B5-8A33-F63B1138192E/d:Views/f:Web.config" caret="0" fromTop="0" />
+    <File id="C5A90A89-4FA1-40B5-8A33-F63B1138192E/d:Controllers/f:RoundDetailController.cs" caret="389" fromTop="6" />
+    <File id="C5A90A89-4FA1-40B5-8A33-F63B1138192E/d:Controllers/f:GolferController.cs" caret="331" fromTop="13" />
+    <File id="C5A90A89-4FA1-40B5-8A33-F63B1138192E/d:Controllers/f:CourseController.cs" caret="331" fromTop="13" />
+    <File id="C5A90A89-4FA1-40B5-8A33-F63B1138192E/d:Controllers/f:FacilityController.cs" caret="333" fromTop="13" />
+    <File id="C5A90A89-4FA1-40B5-8A33-F63B1138192E/d:Controllers/f:HoleController.cs" caret="329" fromTop="13" />
+    <File id="C5A90A89-4FA1-40B5-8A33-F63B1138192E/f:Web.config" caret="3645" fromTop="20" />
+    <File id="C5A90A89-4FA1-40B5-8A33-F63B1138192E/d:Controllers/f:TeeTypeController.cs" caret="2747" fromTop="40" />
+  </RecentEdits>
+</RecentFiles>
