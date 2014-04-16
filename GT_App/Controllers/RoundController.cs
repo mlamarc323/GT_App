@@ -9,33 +9,33 @@ using GT_App.Models;
 
 namespace GT_App.Controllers
 {
-    public class GolferController : Controller
+    public class RoundController : Controller
     {
-        private GT_AppDBEntities2 db = new GT_AppDBEntities2();
+        private GolfStatTrackerEntities db = new GolfStatTrackerEntities();
 
         //
-        // GET: /Golfer/
+        // GET: /Round/
 
         public ActionResult Index()
         {
-            return View(db.Golfers.ToList());
+            return View(db.Rounds.ToList());
         }
 
         //
-        // GET: /Golfer/Details/5
+        // GET: /Round/Details/5
 
         public ActionResult Details(int id = 0)
         {
-            Golfer golfer = db.Golfers.Find(id);
-            if (golfer == null)
+            Round round = db.Rounds.Find(id);
+            if (round == null)
             {
                 return HttpNotFound();
             }
-            return View(golfer);
+            return View(round);
         }
 
         //
-        // GET: /Golfer/Create
+        // GET: /Round/Create
 
         public ActionResult Create()
         {
@@ -43,70 +43,73 @@ namespace GT_App.Controllers
         }
 
         //
-        // POST: /Golfer/Create
+        // POST: /Round/Create
 
         [HttpPost]
-        public ActionResult Create(Golfer golfer)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Round round)
         {
             if (ModelState.IsValid)
             {
-                db.Golfers.Add(golfer);
+                db.Rounds.Add(round);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(golfer);
+            return View(round);
         }
 
         //
-        // GET: /Golfer/Edit/5
+        // GET: /Round/Edit/5
 
         public ActionResult Edit(int id = 0)
         {
-            Golfer golfer = db.Golfers.Find(id);
-            if (golfer == null)
+            Round round = db.Rounds.Find(id);
+            if (round == null)
             {
                 return HttpNotFound();
             }
-            return View(golfer);
+            return View(round);
         }
 
         //
-        // POST: /Golfer/Edit/5
+        // POST: /Round/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(Golfer golfer)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Round round)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(golfer).State = EntityState.Modified;
+                db.Entry(round).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(golfer);
+            return View(round);
         }
 
         //
-        // GET: /Golfer/Delete/5
+        // GET: /Round/Delete/5
 
         public ActionResult Delete(int id = 0)
         {
-            Golfer golfer = db.Golfers.Find(id);
-            if (golfer == null)
+            Round round = db.Rounds.Find(id);
+            if (round == null)
             {
                 return HttpNotFound();
             }
-            return View(golfer);
+            return View(round);
         }
 
         //
-        // POST: /Golfer/Delete/5
+        // POST: /Round/Delete/5
 
         [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Golfer golfer = db.Golfers.Find(id);
-            db.Golfers.Remove(golfer);
+            Round round = db.Rounds.Find(id);
+            db.Rounds.Remove(round);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

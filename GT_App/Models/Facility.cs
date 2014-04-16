@@ -17,18 +17,11 @@ namespace GT_App.Models
         public Facility()
         {
             this.Courses = new HashSet<Course>();
-            this.RoundDetails = new HashSet<RoundDetail>();
         }
     
         public int FacilityId { get; set; }
-        public string Facility_Name { get; set; }
-        public string Address { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public string Zip { get; set; }
-        public string Phone { get; set; }
+        public string Name { get; set; }
     
         public virtual ICollection<Course> Courses { get; set; }
-        public virtual ICollection<RoundDetail> RoundDetails { get; set; }
     }
 }

@@ -11,48 +11,14 @@
     <legend>Facility</legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Facility_Name)
+         @Html.DisplayNameFor(model => model.Name)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Facility_Name)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Address)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Address)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.City)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.City)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.State)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.State)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Zip)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Zip)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Phone)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Phone)
+        @Html.DisplayFor(model => model.Name)
     </div>
 </fieldset>
 @using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
     <p>
         <input type="submit" value="Delete" /> |
         @Html.ActionLink("Back to List", "Index")

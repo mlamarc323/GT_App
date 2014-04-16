@@ -13,7 +13,7 @@ namespace GT_App.Controllers
     {
         //
         // GET: /BusinessLayer/
-        private GolfTrackerEntities3 db = new GT_AppDBEntities4();
+        private GolfStatTrackerEntities db = new GolfStatTrackerEntities();
 
         public ActionResult Index()
         {
@@ -43,7 +43,7 @@ namespace GT_App.Controllers
             {
                 var facilityObj = new Facility();
                 facilityObj.FacilityId = f.FacilityId;
-                facilityObj.Facility_Name = f.Facility_Name;
+                facilityObj.Name = f.Name;
                 list.Add(facilityObj);
             }
             return JsonConvert.SerializeObject(list, Formatting.Indented, JsonSetting);
@@ -57,35 +57,35 @@ namespace GT_App.Controllers
             {
                 var courseObj = new Course();
                 courseObj.CourseId = c.CourseId;
-                courseObj.Course_Name = c.Course_Name;
+                courseObj.Name = c.Name;
                 list.Add(courseObj);
             }
             return JsonConvert.SerializeObject(list, Formatting.Indented, JsonSetting);
         }
 
-        public string GetTeeTypes(int facilityId, int courseId)
-        {
-            //var courses = db.Courses.Where(f => f.FacilityId == facilityId).ToList();
-            var teeTypes = db.TeeTypes.Where(t => t.FacilityId == facilityId && t.CourseId == courseId).ToList();
-            var list = new List<TeeType>();
-            foreach (TeeType t in teeTypes)
-            {
-                var TeeTypeObj = new TeeType();
-                TeeTypeObj.TeeTypeId = t.TeeTypeId;
-                TeeTypeObj.Name = t.Name;
-                list.Add(TeeTypeObj);
-            }
-            return JsonConvert.SerializeObject(list, Formatting.Indented, JsonSetting);
-        }
+        //public string GetTeeTypes(int facilityId, int courseId)
+        //{
+        //    //var courses = db.Courses.Where(f => f.FacilityId == facilityId).ToList();
+        //    var teeTypes = db.TeeTypes.Where(t => t.FacilityId == facilityId && t.CourseId == courseId).ToList();
+        //    var list = new List<TeeType>();
+        //    foreach (TeeType t in teeTypes)
+        //    {
+        //        var TeeTypeObj = new TeeType();
+        //        TeeTypeObj.TeeTypeId = t.TeeTypeId;
+        //        TeeTypeObj.Name = t.Name;
+        //        list.Add(TeeTypeObj);
+        //    }
+        //    return JsonConvert.SerializeObject(list, Formatting.Indented, JsonSetting);
+        //}
         public string GetHolesByCourse(int facilityId, int courseId, int teeTypeId)
         {
-            var holes = db.Holes.Where(x => x.FacilityId == facilityId && x.CourseId == courseId && x.TeeTypeId == teeTypeId).ToList();
+            var holes = db.Holes.Where(x => x.FacilityId == facilityId && x.CourseId == courseId).ToList();
             var list = new List<Hole>();
             foreach (Hole h in holes)
             {
                 var holeObj = new Hole();
                 holeObj.HoleId = h.HoleId;
-                holeObj.Hole_Num = h.Hole_Num;
+                holeObj.Number = h.Number;
                 holeObj.Yardage = h.Yardage;
                 holeObj.Par = h.Par;
                 list.Add(holeObj);

@@ -14,29 +14,14 @@ namespace GT_App.Models
     
     public partial class RoundDetail
     {
+        public int RoundDetailId { get; set; }
         public int RoundId { get; set; }
-        public int GolferId { get; set; }
-        public int FacilityId { get; set; }
-        public int CourseId { get; set; }
-        public int TeeTypeId { get; set; }
         public int HoleId { get; set; }
-        public decimal Differential { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
-        public byte Score { get; set; }
-        public Nullable<byte> Putts { get; set; }
+        public Nullable<int> Score { get; set; }
+        public Nullable<int> Putts { get; set; }
         public Nullable<bool> GIR { get; set; }
         public Nullable<bool> FIR { get; set; }
-        public Nullable<bool> Up_And_Down { get; set; }
-        public Nullable<bool> Par_Save { get; set; }
-        public Nullable<bool> Sand_Save { get; set; }
-        public Nullable<short> Driving_Distince { get; set; }
-        public Nullable<int> Proximity { get; set; }
-        public Nullable<decimal> Green_Fee { get; set; }
     
-        public virtual Course Course { get; set; }
-        public virtual Facility Facility { get; set; }
-        public virtual Golfer Golfer { get; set; }
-        public virtual Hole Hole { get; set; }
-        public virtual TeeType TeeType { get; set; }
+        public virtual Round Round { get; set; }
     }
 }

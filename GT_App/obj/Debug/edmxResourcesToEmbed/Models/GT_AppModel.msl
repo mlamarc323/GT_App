@@ -1,92 +1,85 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="GT_AppDBModelStoreContainer" CdmEntityContainer="GT_AppDBEntities2">
+  <EntityContainerMapping StorageEntityContainer="GolfStatTrackerModelStoreContainer" CdmEntityContainer="GolfStatTrackerEntities">
     <EntitySetMapping Name="Courses">
-      <EntityTypeMapping TypeName="GT_AppDBModel.Course">
+      <EntityTypeMapping TypeName="GolfStatTrackerModel.Course">
         <MappingFragment StoreEntitySet="Course">
-          <ScalarProperty Name="FacilityId" ColumnName="FacilityId" />
-          <ScalarProperty Name="Course_Name" ColumnName="Course_Name" />
           <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="FacilityId" ColumnName="FacilityId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Tees" ColumnName="Tees" />
+          <ScalarProperty Name="Slope" ColumnName="Slope" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="Yardage" ColumnName="Yardage" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Facilities">
-      <EntityTypeMapping TypeName="GT_AppDBModel.Facility">
+      <EntityTypeMapping TypeName="GolfStatTrackerModel.Facility">
         <MappingFragment StoreEntitySet="Facility">
-          <ScalarProperty Name="Facility_Name" ColumnName="Facility_Name" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="City" ColumnName="City" />
-          <ScalarProperty Name="State" ColumnName="State" />
-          <ScalarProperty Name="Zip" ColumnName="Zip" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
           <ScalarProperty Name="FacilityId" ColumnName="FacilityId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Golfers">
-      <EntityTypeMapping TypeName="GT_AppDBModel.Golfer">
+      <EntityTypeMapping TypeName="GolfStatTrackerModel.Golfer">
         <MappingFragment StoreEntitySet="Golfer">
-          <ScalarProperty Name="Firstt_Name" ColumnName="Firstt_Name" />
-          <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="City" ColumnName="City" />
-          <ScalarProperty Name="State" ColumnName="State" />
-          <ScalarProperty Name="Zip" ColumnName="Zip" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Handicap_Index" ColumnName="Handicap_Index" />
           <ScalarProperty Name="GolferId" ColumnName="GolferId" />
+          <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Holes">
-      <EntityTypeMapping TypeName="GT_AppDBModel.Hole">
+      <EntityTypeMapping TypeName="GolfStatTrackerModel.Hole">
         <MappingFragment StoreEntitySet="Hole">
+          <ScalarProperty Name="HoleId" ColumnName="HoleId" />
           <ScalarProperty Name="FacilityId" ColumnName="FacilityId" />
           <ScalarProperty Name="CourseId" ColumnName="CourseId" />
-          <ScalarProperty Name="TeeTypeId" ColumnName="TeeTypeId" />
-          <ScalarProperty Name="Hole_Num" ColumnName="Hole_Num" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
           <ScalarProperty Name="Yardage" ColumnName="Yardage" />
           <ScalarProperty Name="Par" ColumnName="Par" />
           <ScalarProperty Name="Handicap" ColumnName="Handicap" />
-          <ScalarProperty Name="HoleId" ColumnName="HoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rounds">
+      <EntityTypeMapping TypeName="GolfStatTrackerModel.Round">
+        <MappingFragment StoreEntitySet="Round">
+          <ScalarProperty Name="RoundId" ColumnName="RoundId" />
+          <ScalarProperty Name="GolferId" ColumnName="GolferId" />
+          <ScalarProperty Name="FacilityId" ColumnName="FacilityId" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Is_Official" ColumnName="Is_Official" />
+          <ScalarProperty Name="Number_Of_Holes" ColumnName="Number_Of_Holes" />
+          <ScalarProperty Name="HBH_Stats" ColumnName="HBH_Stats" />
+          <ScalarProperty Name="TotalScore" ColumnName="TotalScore" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="RoundDetails">
-      <EntityTypeMapping TypeName="GT_AppDBModel.RoundDetail">
+      <EntityTypeMapping TypeName="GolfStatTrackerModel.RoundDetail">
         <MappingFragment StoreEntitySet="RoundDetail">
-          <ScalarProperty Name="GolferId" ColumnName="GolferId" />
-          <ScalarProperty Name="FacilityId" ColumnName="FacilityId" />
-          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
-          <ScalarProperty Name="TeeTypeId" ColumnName="TeeTypeId" />
+          <ScalarProperty Name="RoundDetailId" ColumnName="RoundDetailId" />
+          <ScalarProperty Name="RoundId" ColumnName="RoundId" />
           <ScalarProperty Name="HoleId" ColumnName="HoleId" />
-          <ScalarProperty Name="Differential" ColumnName="Differential" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
           <ScalarProperty Name="Score" ColumnName="Score" />
           <ScalarProperty Name="Putts" ColumnName="Putts" />
           <ScalarProperty Name="GIR" ColumnName="GIR" />
           <ScalarProperty Name="FIR" ColumnName="FIR" />
-          <ScalarProperty Name="Up_And_Down" ColumnName="Up_And_Down" />
-          <ScalarProperty Name="Par_Save" ColumnName="Par_Save" />
-          <ScalarProperty Name="Sand_Save" ColumnName="Sand_Save" />
-          <ScalarProperty Name="Driving_Distance" ColumnName="Driving_Distance" />
-          <ScalarProperty Name="Proximity" ColumnName="Proximity" />
-          <ScalarProperty Name="Green_Fee" ColumnName="Green_Fee" />
-          <ScalarProperty Name="RoundId" ColumnName="RoundId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TeeTypes">
-      <EntityTypeMapping TypeName="GT_AppDBModel.TeeType">
-        <MappingFragment StoreEntitySet="TeeType">
-          <ScalarProperty Name="FacilityId" ColumnName="FacilityId" />
-          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Slope" ColumnName="Slope" />
-          <ScalarProperty Name="Rating" ColumnName="Rating" />
-          <ScalarProperty Name="Gender" ColumnName="Gender" />
-          <ScalarProperty Name="TeeTypeId" ColumnName="TeeTypeId" />
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="GolfStatTrackerModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

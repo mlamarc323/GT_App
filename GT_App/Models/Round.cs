@@ -12,24 +12,23 @@ namespace GT_App.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TeeType
+    public partial class Round
     {
-        public TeeType()
+        public Round()
         {
-            this.Holes = new HashSet<Hole>();
             this.RoundDetails = new HashSet<RoundDetail>();
         }
     
-        public int TeeTypeId { get; set; }
+        public int RoundId { get; set; }
+        public Nullable<int> GolferId { get; set; }
         public int FacilityId { get; set; }
         public int CourseId { get; set; }
-        public string Name { get; set; }
-        public Nullable<int> Slope { get; set; }
-        public Nullable<decimal> Rating { get; set; }
-        public string Gender { get; set; }
+        public System.DateTime Date { get; set; }
+        public bool Is_Official { get; set; }
+        public bool Number_Of_Holes { get; set; }
+        public bool HBH_Stats { get; set; }
+        public Nullable<int> TotalScore { get; set; }
     
-        public virtual Course Course { get; set; }
-        public virtual ICollection<Hole> Holes { get; set; }
         public virtual ICollection<RoundDetail> RoundDetails { get; set; }
     }
 }

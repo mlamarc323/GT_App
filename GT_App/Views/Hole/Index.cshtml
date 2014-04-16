@@ -7,10 +7,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New Tee Type", "Create")
-</p>
-<p>
-    @Html.ActionLink("Create New Hole", "Create", "Hole")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table>
     <tr>
@@ -18,13 +15,10 @@
             @Html.DisplayNameFor(model => model.FacilityId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CourseId)
+            @Html.DisplayNameFor(model => model.Course.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TeeType.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Hole_Num)
+            @Html.DisplayNameFor(model => model.Number)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Yardage)
@@ -44,13 +38,10 @@
             @Html.DisplayFor(modelItem => item.FacilityId)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CourseId)
+            @Html.DisplayFor(modelItem => item.Course.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TeeType.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Hole_Num)
+            @Html.DisplayFor(modelItem => item.Number)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Yardage)

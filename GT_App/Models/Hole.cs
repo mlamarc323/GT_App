@@ -14,21 +14,14 @@ namespace GT_App.Models
     
     public partial class Hole
     {
-        public Hole()
-        {
-            this.RoundDetails = new HashSet<RoundDetail>();
-        }
-    
         public int HoleId { get; set; }
         public int FacilityId { get; set; }
         public int CourseId { get; set; }
-        public int TeeTypeId { get; set; }
-        public int Hole_Num { get; set; }
-        public int Yardage { get; set; }
-        public byte Par { get; set; }
-        public short Handicap { get; set; }
+        public int Number { get; set; }
+        public Nullable<int> Yardage { get; set; }
+        public Nullable<int> Par { get; set; }
+        public Nullable<int> Handicap { get; set; }
     
-        public virtual ICollection<RoundDetail> RoundDetails { get; set; }
-        public virtual TeeType TeeType { get; set; }
+        public virtual Course Course { get; set; }
     }
 }

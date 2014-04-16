@@ -6,21 +6,19 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using GT_App.Models;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 
 namespace GT_App.Controllers
 {
     public class HoleController : Controller
     {
-        private GT_AppDBEntities2 db = new GT_AppDBEntities2();
+        private GolfStatTrackerEntities db = new GolfStatTrackerEntities();
 
         //
         // GET: /Hole/
 
         public ActionResult Index()
         {
-            var holes = db.Holes.Include(h => h.TeeType);
+            var holes = db.Holes.Include(h => h.Course);
             return View(holes.ToList());
         }
 
@@ -42,10 +40,7 @@ namespace GT_App.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.FacilityId = new SelectList(db.Facilities, "FacilityId", "Facility_Name");
-            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "Course_Name");
-            ViewBag.TeeTypeId = new SelectList(db.TeeTypes, "TeeTypeId", "Name");
-
+            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "Name");
             return View();
         }
 
@@ -53,6 +48,7 @@ namespace GT_App.Controllers
         // POST: /Hole/Create
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Hole hole)
         {
             if (ModelState.IsValid)
@@ -62,7 +58,7 @@ namespace GT_App.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.TeeTypeId = new SelectList(db.TeeTypes, "TeeTypeId", "Name", hole.TeeTypeId);
+            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "Name", hole.CourseId);
             return View(hole);
         }
 
@@ -76,7 +72,7 @@ namespace GT_App.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.TeeTypeId = new SelectList(db.TeeTypes, "TeeTypeId", "Name", hole.TeeTypeId);
+            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "Name", hole.CourseId);
             return View(hole);
         }
 
@@ -84,6 +80,7 @@ namespace GT_App.Controllers
         // POST: /Hole/Edit/5
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(Hole hole)
         {
             if (ModelState.IsValid)
@@ -92,7 +89,7 @@ namespace GT_App.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.TeeTypeId = new SelectList(db.TeeTypes, "TeeTypeId", "Name", hole.TeeTypeId);
+            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "Name", hole.CourseId);
             return View(hole);
         }
 
@@ -113,6 +110,7 @@ namespace GT_App.Controllers
         // POST: /Hole/Delete/5
 
         [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             Hole hole = db.Holes.Find(id);
@@ -126,6 +124,5 @@ namespace GT_App.Controllers
             db.Dispose();
             base.Dispose(disposing);
         }
-        
     }
 }

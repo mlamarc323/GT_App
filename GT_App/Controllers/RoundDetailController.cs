@@ -5,23 +5,20 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Services;
 using GT_App.Models;
-using GT_App.ViewModel;
 
 namespace GT_App.Controllers
 {
     public class RoundDetailController : Controller
     {
-        private GT_AppDBEntities2 db = new GT_AppDBEntities2();
+        private GolfStatTrackerEntities db = new GolfStatTrackerEntities();
 
         //
         // GET: /RoundDetail/
 
         public ActionResult Index()
         {
-            //var rounddetails = db.RoundDetails.Include(r => r.Course).Include(r => r.Facility).Include(r => r.Golfer).Include(r => r.Hole).Include(r => r.TeeType);
-            var rounddetails = db.RoundDetails.Include(r => r.GolferId);
+            var rounddetails = db.RoundDetails.Include(r => r.Round);
             return View(rounddetails.ToList());
         }
 
@@ -37,68 +34,32 @@ namespace GT_App.Controllers
             }
             return View(rounddetail);
         }
-        
+
         //
-        // GET: /Hole/Create
+        // GET: /RoundDetail/Create
 
         public ActionResult Create()
         {
-            ViewBag.FacilityId = new SelectList(db.Facilities, "FacilityId", "Facility_Name");
-            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "Course_Name");
-            ViewBag.TeeTypeId = new SelectList(db.TeeTypes, "TeeTypeId", "Name");
-
+            ViewBag.RoundId = new SelectList(db.Rounds, "RoundId", "RoundId");
             return View();
         }
-        
 
+        //
         // POST: /RoundDetail/Create
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(RoundDetail rounddetail)
         {
             if (ModelState.IsValid)
             {
-                var roundDetailList = CreateListOfRoundDetails();
-                foreach (RoundDetail r in roundDetailList)
-                {
-                    db.RoundDetails.Add(rounddetail);
-                }
-                
+                db.RoundDetails.Add(rounddetail);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
+            ViewBag.RoundId = new SelectList(db.Rounds, "RoundId", "RoundId", rounddetail.RoundId);
             return View(rounddetail);
-        }
-
-        public List<RoundDetail> CreateListOfRoundDetails()
-        {
-            var list = new List<RoundDetail>();
-            if (ModelState.IsValid)
-            {
-                
-                var detail = new RoundDetail();
-
-                foreach (RoundDetail r in list)
-                {
-                    detail.GolferId = 1;
-                    detail.FacilityId = r.FacilityId; 
-                    detail.CourseId = r.CourseId;
-                    detail.TeeTypeId = r.TeeTypeId;
-                    detail.HoleId = r.HoleId;
-                    detail.Date = r.Date;
-                    detail.Score = r.Score;
-                    detail.Differential = 1.00;
-                    list.Add(detail);
-                }
-                
-                //db.RoundDetails.Add();
-                //db.SaveChanges();
-                //return RedirectToAction("Index");
-            }
-            return list;
-
-            
         }
 
         //
@@ -111,11 +72,7 @@ namespace GT_App.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "Course_Name", rounddetail.CourseId);
-            ViewBag.FacilityId = new SelectList(db.Facilities, "FacilityId", "Facility_Name", rounddetail.FacilityId);
-            ViewBag.GolferId = new SelectList(db.Golfers, "GolferId", "First_Name", rounddetail.GolferId);
-            ViewBag.HoleId = new SelectList(db.Holes, "HoleId", "HoleId", rounddetail.HoleId);
-            ViewBag.TeeTypeId = new SelectList(db.TeeTypes, "TeeTypeId", "Name", rounddetail.TeeTypeId);
+            ViewBag.RoundId = new SelectList(db.Rounds, "RoundId", "RoundId", rounddetail.RoundId);
             return View(rounddetail);
         }
 
@@ -123,6 +80,7 @@ namespace GT_App.Controllers
         // POST: /RoundDetail/Edit/5
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(RoundDetail rounddetail)
         {
             if (ModelState.IsValid)
@@ -131,11 +89,7 @@ namespace GT_App.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "Course_Name", rounddetail.CourseId);
-            ViewBag.FacilityId = new SelectList(db.Facilities, "FacilityId", "Facility_Name", rounddetail.FacilityId);
-            ViewBag.GolferId = new SelectList(db.Golfers, "GolferId", "First_Name", rounddetail.GolferId);
-            ViewBag.HoleId = new SelectList(db.Holes, "HoleId", "HoleId", rounddetail.HoleId);
-            ViewBag.TeeTypeId = new SelectList(db.TeeTypes, "TeeTypeId", "Name", rounddetail.TeeTypeId);
+            ViewBag.RoundId = new SelectList(db.Rounds, "RoundId", "RoundId", rounddetail.RoundId);
             return View(rounddetail);
         }
 
@@ -156,14 +110,15 @@ namespace GT_App.Controllers
         // POST: /RoundDetail/Delete/5
 
         [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             RoundDetail rounddetail = db.RoundDetails.Find(id);
             db.RoundDetails.Remove(rounddetail);
             db.SaveChanges();
             return RedirectToAction("Index");
-        }        
-        
+        }
+
         protected override void Dispose(bool disposing)
         {
             db.Dispose();

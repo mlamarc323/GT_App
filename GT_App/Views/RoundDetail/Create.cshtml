@@ -1,125 +1,65 @@
-﻿@model GT_App.ViewModel.RoundDetailViewModel
+﻿@model GT_App.Models.RoundDetail
 
 @{
     ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
 
 <h2>Create</h2>
 
-@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "frmRoundDetail" }))
-{
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
         <legend>RoundDetail</legend>
-        <table>  
-            <tr>                
-                <td></td>
-                <td>
-                    <div><input type='checkbox' id="chk9hole" name='HoleAmt'>&nbsp;9</div>
-                    <div><input type='checkbox' id="chk18hole" name='HoleAmt' checked="checked">&nbsp;18</div>                    
-                </td>
-            </tr>          
-            <tr>
-                <td>
-                    <div style="font-weight: bold">
-                        Facility
-                    </div>
-                </td>
-                <td>
-                    <div class="editor-field">
-                        @Html.DropDownList("FacilityId", string.Empty)
 
-                        @*<select id="ddlFacilities" style="width: 150px" />*@
-                        @*@Html.DropDownListFor(m => m.Facilities.Facility_Name, Model.AvailableFacilities, new { style = "width: 150px", id = "ddlFacilities" })*@
-                        @*@Html.DropDownListFor(m => m.Facilities, new SelectList(Model.AvailableFacilities, "Value", "Text"), new { style = "width: 150px", id = "ddlFacility" })*@
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div style="font-weight: bold">
-                        Course
-                    </div>
-                </td>
-                <td>
-                    <div class="editor-field">
-                        @Html.DropDownList("CourseId", String.Empty)
-                        @*@Html.DropDownListFor(m => m.Courses.Course_Name, Model.AvailableCourses, new { style = "width: 150px", id = "ddlCourses" })*@
-                        @*@Html.DropDownListFor(m => m.Courses, Enumerable.Empty<SelectListItem>(), "-- Select Course --", new { style = "width: 150px", id = "ddlCourse" })*@
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div style="font-weight: bold">
-                        Tees
-                    </div>
-                </td>
-
-
-                <td>
-                    <div class="editor-field">
-                        @Html.DropDownList("TeeTypeId", String.Empty)
-                        @*@Html.DropDownListFor(m => m.TeeTypes.Name, Model.AvailableTeeTypes, new { style = "width: 150px" })*@
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div style="font-weight: bold">
-                        Date
-                    </div>
-                </td>
-                <td>
-                    <div>
-                        @Html.TextBoxFor(m => m.RoundDetails.Date, new { id = "Date", style = "width: 90px" })
-                    </div>
-                </td>
-            </tr>
-
-            @*<tr>
-                <td>
-                    <div style="font-weight: bold">
-                        Quick Post
-                    </div>
-                </td>
-                <td>
-                    <input id="rbQuickPost" type="radio" name="form" value="QuickPost" checked="checked" title="Basic" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div style="font-weight: bold">
-                        Full Post
-                    </div>
-                </td>
-                <td>
-                    <input id="rbFullPost" type="radio" name="form" value="FullPost" title="Full" />
-                </td>
-            </tr>*@
-
-
-        </table>
-        <section>
-            <div id="divRoundDetail"></div>
-        </section>
-        <section>
-            <div id="divRoundDetail2"></div>
-        </section>
-             
         <div class="editor-label">
-            @Html.LabelFor(model => model.RoundDetails.Differential)
+            @Html.LabelFor(model => model.RoundId, "Round")
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.RoundDetails.Differential)
-            @Html.ValidationMessageFor(model => model.RoundDetails.Differential)
+            @Html.DropDownList("RoundId", String.Empty)
+            @Html.ValidationMessageFor(model => model.RoundId)
         </div>
 
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HoleId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.HoleId)
+            @Html.ValidationMessageFor(model => model.HoleId)
+        </div>
 
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Score)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Score)
+            @Html.ValidationMessageFor(model => model.Score)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Putts)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Putts)
+            @Html.ValidationMessageFor(model => model.Putts)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GIR)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GIR)
+            @Html.ValidationMessageFor(model => model.GIR)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FIR)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FIR)
+            @Html.ValidationMessageFor(model => model.FIR)
+        </div>
 
         <p>
             <input type="submit" value="Create" />
@@ -131,29 +71,6 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-<script src="~/Scripts/RoundDetail.js"></script>
-<script type="text/javascript">
-    $(function () {
-        var ddlFacility = $("#FacilityId");
-        var ddlCourse = $("#CourseId");
-        var ddlTeeType = $("#TeeTypeId");
-
-        $("#Date").datepicker();
-
-        FillFacilityDropdown();
-        ddlFacility.empty();
-        ddlCourse.empty();
-        ddlTeeType.empty();
-
-        ddlFacility.change(FillCourseDropdown);
-        ddlCourse.change(FillTeeTypeDropdown);
-        ddlTeeType.change(GetAllHoles);
-
-
-    });
-</script>
-
 @section Scripts {
-    @*@Scripts.Render("~/bundles/jqueryval")*@
-    @*@Scripts.Render("~/bundles/jqueryui")*@
+    @Scripts.Render("~/bundles/jqueryval")
 }

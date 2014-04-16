@@ -11,7 +11,7 @@ namespace GT_App.Controllers
 {
     public class FacilityController : Controller
     {
-        private GT_AppDBEntities2 db = new GT_AppDBEntities2();
+        private GolfStatTrackerEntities db = new GolfStatTrackerEntities();
 
         //
         // GET: /Facility/
@@ -46,16 +46,19 @@ namespace GT_App.Controllers
         // POST: /Facility/Create
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Facility facility)
         {
             if (ModelState.IsValid)
             {
                 db.Facilities.Add(facility);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                Session["facilityId"] = facility.FacilityId;
+                Session["facilityName"] = facility.Name;
+                return RedirectToAction("Create", "Course");
             }
 
-            return View(facility);
+            return View();
         }
 
         //
@@ -68,6 +71,7 @@ namespace GT_App.Controllers
             {
                 return HttpNotFound();
             }
+            Session["facilityId"] = facility.FacilityId;
             return View(facility);
         }
 
@@ -75,12 +79,14 @@ namespace GT_App.Controllers
         // POST: /Facility/Edit/5
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(Facility facility)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(facility).State = EntityState.Modified;
                 db.SaveChanges();
+                Session["facilityId"] = string.Empty;
                 return RedirectToAction("Index");
             }
             return View(facility);
@@ -96,6 +102,7 @@ namespace GT_App.Controllers
             {
                 return HttpNotFound();
             }
+            Session["facilityId"] = facility.FacilityId;
             return View(facility);
         }
 
@@ -103,18 +110,14 @@ namespace GT_App.Controllers
         // POST: /Facility/Delete/5
 
         [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             Facility facility = db.Facilities.Find(id);
             db.Facilities.Remove(facility);
             db.SaveChanges();
+            Session["facilityId"] = string.Empty;
             return RedirectToAction("Index");
-        }
-
-        public IEnumerable<Facility> GetAllFacilities()
-        {
-            var facilities = db.Facilities.ToList();
-            return facilities;
         }
 
         protected override void Dispose(bool disposing)
@@ -122,6 +125,5 @@ namespace GT_App.Controllers
             db.Dispose();
             base.Dispose(disposing);
         }
-
     }
 }

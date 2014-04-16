@@ -1,0 +1,71 @@
+﻿@model GT_App.Models.Round
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Round</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GolferId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GolferId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FacilityId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FacilityId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CourseId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CourseId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Date)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Is_Official)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Is_Official)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Number_Of_Holes)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Number_Of_Holes)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.HBH_Stats)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HBH_Stats)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TotalScore)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TotalScore)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.RoundId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -12,7 +12,6 @@ namespace GT_App.ViewModel
 
         public Facility Facilities { get; set; }
         public Course Courses { get; set; }
-        public TeeType TeeTypes { get; set; }
         public Hole Holes { get; set; }
         public RoundDetail RoundDetails { get; set; }
 

@@ -7,6 +7,7 @@
 <h2>Edit</h2>
 
 @using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
@@ -23,27 +24,19 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.CourseId)
+            @Html.LabelFor(model => model.CourseId, "Course")
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.CourseId)
+            @Html.DropDownList("CourseId", String.Empty)
             @Html.ValidationMessageFor(model => model.CourseId)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.TeeTypeId, "TeeType")
+            @Html.LabelFor(model => model.Number)
         </div>
         <div class="editor-field">
-            @Html.DropDownList("TeeTypeId", String.Empty)
-            @Html.ValidationMessageFor(model => model.TeeTypeId)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Hole_Num)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Hole_Num)
-            @Html.ValidationMessageFor(model => model.Hole_Num)
+            @Html.EditorFor(model => model.Number)
+            @Html.ValidationMessageFor(model => model.Number)
         </div>
 
         <div class="editor-label">

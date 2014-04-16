@@ -6,14 +6,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using GT_App.Models;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 
 namespace GT_App.Controllers
 {
     public class CourseController : Controller
     {
-        private GT_AppDBEntities2 db = new GT_AppDBEntities2();
+        private GolfStatTrackerEntities db = new GolfStatTrackerEntities();
 
         //
         // GET: /Course/
@@ -42,7 +40,7 @@ namespace GT_App.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.FacilityId = new SelectList(db.Facilities, "FacilityId", "Facility_Name");
+            ViewBag.FacilityId = new SelectList(db.Facilities, "FacilityId", "Name");
             return View();
         }
 
@@ -50,16 +48,17 @@ namespace GT_App.Controllers
         // POST: /Course/Create
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Course course)
         {
             if (ModelState.IsValid)
             {
                 db.Courses.Add(course);
                 db.SaveChanges();
-                return RedirectToAction("Create","TeeType");
+                return RedirectToAction("Index");
             }
 
-            ViewBag.FacilityId = new SelectList(db.Facilities, "FacilityId", "Facility_Name", course.FacilityId);
+            ViewBag.FacilityId = new SelectList(db.Facilities, "FacilityId", "Name", course.FacilityId);
             return View(course);
         }
 
@@ -73,7 +72,7 @@ namespace GT_App.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.FacilityId = new SelectList(db.Facilities, "FacilityId", "Facility_Name", course.FacilityId);
+            ViewBag.FacilityId = new SelectList(db.Facilities, "FacilityId", "Name", course.FacilityId);
             return View(course);
         }
 
@@ -81,6 +80,7 @@ namespace GT_App.Controllers
         // POST: /Course/Edit/5
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(Course course)
         {
             if (ModelState.IsValid)
@@ -89,7 +89,7 @@ namespace GT_App.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FacilityId = new SelectList(db.Facilities, "FacilityId", "Facility_Name", course.FacilityId);
+            ViewBag.FacilityId = new SelectList(db.Facilities, "FacilityId", "Name", course.FacilityId);
             return View(course);
         }
 
@@ -110,6 +110,7 @@ namespace GT_App.Controllers
         // POST: /Course/Delete/5
 
         [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             Course course = db.Courses.Find(id);
@@ -122,8 +123,6 @@ namespace GT_App.Controllers
         {
             db.Dispose();
             base.Dispose(disposing);
-        }    
-
-        
+        }
     }
 }

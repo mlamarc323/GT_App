@@ -171,41 +171,23 @@
     <Compile Include="Controllers\BusinessLayerController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\FacilityController.cs" />
-    <Compile Include="Controllers\GolferController.cs" />
     <Compile Include="Controllers\HoleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\RoundDetailController.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Controllers\TeeTypeController.cs" />
+    <Compile Include="Controllers\RoundController.cs" />
+    <Compile Include="Controllers\RoundDetailController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Course.cs">
-      <DependentUpon>GT_AppDBModel.tt</DependentUpon>
+      <DependentUpon>GT_AppModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Facility.cs">
-      <DependentUpon>GT_AppDBModel.tt</DependentUpon>
+      <DependentUpon>GT_AppModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Golfer.cs">
-      <DependentUpon>GT_AppDBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\GT_AppDBModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GT_AppDBModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\GT_AppDBModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GT_AppDBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\GT_AppDBModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GT_AppDBModel.edmx</DependentUpon>
+      <DependentUpon>GT_AppModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GT_AppModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -223,16 +205,16 @@
       <DependentUpon>GT_AppModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Hole.cs">
-      <DependentUpon>GT_AppDBModel.tt</DependentUpon>
+      <DependentUpon>GT_AppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Round.cs">
+      <DependentUpon>GT_AppModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RoundDetail.cs">
-      <DependentUpon>GT_AppDBModel.tt</DependentUpon>
+      <DependentUpon>GT_AppModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>GT_AppDBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TeeType.cs">
-      <DependentUpon>GT_AppDBModel.tt</DependentUpon>
+      <DependentUpon>GT_AppModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\RoundDetailViewModel.cs" />
@@ -296,6 +278,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="js\course.js" />
     <EntityDeploy Include="Models\GT_AppModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>GT_AppModel.Designer.cs</LastGenOutput>
@@ -312,23 +295,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>GT_AppModel.edmx</DependentUpon>
       <LastGenOutput>GT_AppModel.cs</LastGenOutput>
-    </Content>
-    <EntityDeploy Include="Models\GT_AppDBModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>GT_AppDBModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\GT_AppDBModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>GT_AppDBModel.edmx</DependentUpon>
-      <LastGenOutput>GT_AppDBModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\GT_AppDBModel.edmx.diagram">
-      <DependentUpon>GT_AppDBModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\GT_AppDBModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>GT_AppDBModel.edmx</DependentUpon>
-      <LastGenOutput>GT_AppDBModel.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\Hole.js" />
@@ -407,21 +373,16 @@
     <Content Include="Views\Hole\Create.cshtml" />
     <Content Include="Views\Hole\Edit.cshtml" />
     <Content Include="Views\Hole\Delete.cshtml" />
+    <Content Include="Views\Round\Index.cshtml" />
+    <Content Include="Views\Round\Details.cshtml" />
+    <Content Include="Views\Round\Create.cshtml" />
+    <Content Include="Views\Round\Edit.cshtml" />
+    <Content Include="Views\Round\Delete.cshtml" />
     <Content Include="Views\RoundDetail\Index.cshtml" />
     <Content Include="Views\RoundDetail\Details.cshtml" />
     <Content Include="Views\RoundDetail\Create.cshtml" />
     <Content Include="Views\RoundDetail\Edit.cshtml" />
     <Content Include="Views\RoundDetail\Delete.cshtml" />
-    <Content Include="Views\Golfer\Index.cshtml" />
-    <Content Include="Views\Golfer\Details.cshtml" />
-    <Content Include="Views\Golfer\Create.cshtml" />
-    <Content Include="Views\Golfer\Edit.cshtml" />
-    <Content Include="Views\Golfer\Delete.cshtml" />
-    <Content Include="Views\TeeType\Index.cshtml" />
-    <Content Include="Views\TeeType\Details.cshtml" />
-    <Content Include="Views\TeeType\Create.cshtml" />
-    <Content Include="Views\TeeType\Edit.cshtml" />
-    <Content Include="Views\TeeType\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\jqueryTabbedMenu\" />

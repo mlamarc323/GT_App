@@ -7,6 +7,7 @@
 <h2>Create</h2>
 
 @using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
@@ -16,7 +17,7 @@
             @Html.LabelFor(model => model.FacilityId)
         </div>
         <div class="editor-field">
-            @Html.DropDownList("FacilityId", string.Empty)
+            @Html.EditorFor(model => model.FacilityId)
             @Html.ValidationMessageFor(model => model.FacilityId)
         </div>
 
@@ -27,21 +28,13 @@
             @Html.DropDownList("CourseId", String.Empty)
             @Html.ValidationMessageFor(model => model.CourseId)
         </div>
-        
-        <div class="editor-label">
-            @Html.LabelFor(model => model.TeeTypeId, "TeeType")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("TeeTypeId", String.Empty)
-            @Html.ValidationMessageFor(model => model.TeeTypeId)
-        </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Hole_Num)
+            @Html.LabelFor(model => model.Number)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Hole_Num)
-            @Html.ValidationMessageFor(model => model.Hole_Num)
+            @Html.EditorFor(model => model.Number)
+            @Html.ValidationMessageFor(model => model.Number)
         </div>
 
         <div class="editor-label">
@@ -77,24 +70,6 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
-<script src="~/Scripts/Hole.js"></script>
-<script type="text/javascript">
-    
-
-    $(function () {
-
-        FillFacilityDropdown();
-        $("#FacilityId").empty();
-        $("#CourseId").empty();
-        $("#TeeTypeId").empty();
-        
-        $('#FacilityId').change(FillCourseDropdown);
-        $('#CourseId').change(FillTeeTypeDropdown);
-
-    });
-
-</script>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

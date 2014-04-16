@@ -14,22 +14,8 @@ namespace GT_App.Models
     
     public partial class Golfer
     {
-        public Golfer()
-        {
-            this.RoundDetails = new HashSet<RoundDetail>();
-        }
-    
         public int GolferId { get; set; }
-        public string First_Name { get; set; }
-        public string Last_Name { get; set; }
-        public string Address { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public string Zip { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
-        public Nullable<decimal> Handicap_Index { get; set; }
-    
-        public virtual ICollection<RoundDetail> RoundDetails { get; set; }
+        public byte[] First_Name { get; set; }
+        public int Last_Name { get; set; }
     }
 }

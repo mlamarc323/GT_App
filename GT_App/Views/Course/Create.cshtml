@@ -7,25 +7,55 @@
 <h2>Create</h2>
 
 @using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
         <legend>Course</legend>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.FacilityId, "Facility")
+        <div>FacilityId: @Session["FacilityId"] - @Session["FacilityName"]</div>
+    <div>
+        <select id="ddlFacilities"></select>
+    </div>
+
+    <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
         </div>
         <div class="editor-field">
-            @Html.DropDownList("FacilityId", String.Empty)
-            @Html.ValidationMessageFor(model => model.FacilityId)
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Course_Name)
+            @Html.LabelFor(model => model.Tees)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Course_Name)
-            @Html.ValidationMessageFor(model => model.Course_Name)
+            @Html.EditorFor(model => model.Tees)
+            @Html.ValidationMessageFor(model => model.Tees)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Slope)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Slope)
+            @Html.ValidationMessageFor(model => model.Slope)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Rating)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Rating)
+            @Html.ValidationMessageFor(model => model.Rating)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Yardage)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Yardage)
+            @Html.ValidationMessageFor(model => model.Yardage)
         </div>
 
         <p>

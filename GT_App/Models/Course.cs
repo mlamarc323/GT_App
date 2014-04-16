@@ -16,16 +16,18 @@ namespace GT_App.Models
     {
         public Course()
         {
-            this.RoundDetails = new HashSet<RoundDetail>();
-            this.TeeTypes = new HashSet<TeeType>();
+            this.Holes = new HashSet<Hole>();
         }
     
         public int CourseId { get; set; }
-        public int FacilityId { get; set; }
-        public string Course_Name { get; set; }
+        public Nullable<int> FacilityId { get; set; }
+        public string Name { get; set; }
+        public string Tees { get; set; }
+        public Nullable<int> Slope { get; set; }
+        public Nullable<decimal> Rating { get; set; }
+        public Nullable<int> Yardage { get; set; }
     
         public virtual Facility Facility { get; set; }
-        public virtual ICollection<RoundDetail> RoundDetails { get; set; }
-        public virtual ICollection<TeeType> TeeTypes { get; set; }
+        public virtual ICollection<Hole> Holes { get; set; }
     }
 }

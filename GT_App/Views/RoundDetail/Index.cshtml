@@ -12,28 +12,10 @@
 <table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.RoundId)
+            @Html.DisplayNameFor(model => model.Round.RoundId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Golfer.First_Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Facility.Facility_Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Course.Course_Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TeeType.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Hole.HoleId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Differential)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
+            @Html.DisplayNameFor(model => model.HoleId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Score)
@@ -47,52 +29,16 @@
         <th>
             @Html.DisplayNameFor(model => model.FIR)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Up_And_Down)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Par_Save)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Sand_Save)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Driving_Distince)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Proximity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Green_Fee)
-        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.RoundId)
+            @Html.DisplayFor(modelItem => item.Round.RoundId)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Golfer.First_Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Facility.Facility_Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Course.Course_Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TeeType.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Hole.HoleId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Differential)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
+            @Html.DisplayFor(modelItem => item.HoleId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Score)
@@ -107,27 +53,9 @@
             @Html.DisplayFor(modelItem => item.FIR)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Up_And_Down)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Par_Save)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sand_Save)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Driving_Distince)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Proximity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Green_Fee)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "Edit", new { id=item.RoundDetailId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RoundDetailId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RoundDetailId })
         </td>
     </tr>
 }
