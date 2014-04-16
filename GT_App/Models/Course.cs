@@ -16,14 +16,16 @@ namespace GT_App.Models
     {
         public Course()
         {
-            this.Holes = new HashSet<Hole>();
+            this.RoundDetails = new HashSet<RoundDetail>();
+            this.TeeTypes = new HashSet<TeeType>();
         }
     
+        public int CourseId { get; set; }
         public int FacilityId { get; set; }
         public string Course_Name { get; set; }
-        public int CourseId { get; set; }
     
         public virtual Facility Facility { get; set; }
-        public virtual ICollection<Hole> Holes { get; set; }
+        public virtual ICollection<RoundDetail> RoundDetails { get; set; }
+        public virtual ICollection<TeeType> TeeTypes { get; set; }
     }
 }

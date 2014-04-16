@@ -13,8 +13,7 @@ namespace GT_App.Controllers
     {
         //
         // GET: /BusinessLayer/
-
-        private GT_AppDBEntities4 db = new GT_AppDBEntities4();
+        private GolfTrackerEntities3 db = new GT_AppDBEntities4();
 
         public ActionResult Index()
         {
