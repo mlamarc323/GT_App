@@ -12,7 +12,6 @@ namespace GT_App.Controllers
     public class FacilityController : Controller
     {
         private GolfStatTrackerEntities db = new GolfStatTrackerEntities();
-        //private SessionObj session = new SessionObj();
 
         //
         // GET: /Facility/

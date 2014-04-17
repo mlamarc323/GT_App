@@ -22,13 +22,13 @@
             session.FacilityId = Convert.ToInt32(Session["FacilityId"]);
         }
         @if (session.FacilityId != 0) {
+            @Html.LabelFor(model => model.FacilityId, @Session["FacilityId"])
             <div>FacilityId: @Session["FacilityId"] - @Session["FacilityName"]</div>
         }
         else
         {
-            <div><select id="ddlFacilities"></select></div>
+            @Html.DropDownListFor(model => model.FacilityId, (IEnumerable<SelectListItem>)ViewBag.FacilityId)
         }
-        @*<div>FacilityId: @Session["FacilityId"] - @Session["FacilityName"]</div>*@
     <div class="editor-label">
             @Html.LabelFor(model => model.Name)
         </div>

@@ -21,10 +21,14 @@ namespace GT_App.Controllers
         {
             var prevView = System.Web.HttpContext.Current.Request.UrlReferrer;
             var courses = db.Courses.Include(c => c.Facility);
+            
+            // Clears Session if creation of all relevent entities is stopped
             if (prevView.AbsolutePath == "/Course/Create")
             {
                 Session["FacilityId"] = 0;
                 Session["FacilityName"] = string.Empty;
+                Session["CourseId"] = 0;
+                Session["CourseName"] = string.Empty;
             }
             return View(courses.ToList());
         }
@@ -61,9 +65,17 @@ namespace GT_App.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (Session["FacilityId"] != null || Convert.ToInt32(Session["FacilityId"]) != 0)
+                {
+                    course.FacilityId = Convert.ToInt32(Session["FacilityId"]);
+                }
+                Session["FacilityId"] = course.FacilityId;
+                Session["FacilityName"] = course.Name;
+                Session["CourseId"] = course.CourseId;
+                Session["CourseName"] = course.Name;
                 db.Courses.Add(course);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "Hole");
             }
 
             ViewBag.FacilityId = new SelectList(db.Facilities, "FacilityId", "Name", course.FacilityId);
@@ -80,6 +92,8 @@ namespace GT_App.Controllers
             {
                 return HttpNotFound();
             }
+            Session["FacilityId"] = course.FacilityId;
+            Session["CourseId"] = course.CourseId;
             ViewBag.FacilityId = new SelectList(db.Facilities, "FacilityId", "Name", course.FacilityId);
             return View(course);
         }
@@ -95,6 +109,8 @@ namespace GT_App.Controllers
             {
                 db.Entry(course).State = EntityState.Modified;
                 db.SaveChanges();
+                Session["FacilityId"] = course.FacilityId;
+                Session["CourseId"] = course.CourseId;
                 return RedirectToAction("Index");
             }
             ViewBag.FacilityId = new SelectList(db.Facilities, "FacilityId", "Name", course.FacilityId);
@@ -111,6 +127,8 @@ namespace GT_App.Controllers
             {
                 return HttpNotFound();
             }
+            Session["FacilityId"] = course.FacilityId;
+            Session["CourseId"] = course.CourseId;
             return View(course);
         }
 
@@ -124,6 +142,8 @@ namespace GT_App.Controllers
             Course course = db.Courses.Find(id);
             db.Courses.Remove(course);
             db.SaveChanges();
+            Session["FacilityId"] = course.FacilityId;
+            Session["CourseId"] = course.CourseId;
             return RedirectToAction("Index");
         }
 

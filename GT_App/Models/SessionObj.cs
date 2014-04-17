@@ -5,6 +5,7 @@ using System.Web;
 
 namespace GT_App.Models
 {
+    // Used in Views to pass session
     public class SessionObj
     {
         public int FacilityId { get; set; }
