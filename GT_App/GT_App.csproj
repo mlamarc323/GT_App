@@ -213,6 +213,7 @@
     <Compile Include="Models\RoundDetail.cs">
       <DependentUpon>GT_AppModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SessionObj.cs" />
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>GT_AppModel.tt</DependentUpon>
     </Compile>

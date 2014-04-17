@@ -12,15 +12,23 @@ namespace GT_App.Controllers
     public class CourseController : Controller
     {
         private GolfStatTrackerEntities db = new GolfStatTrackerEntities();
+        SessionObj session = new SessionObj();
 
         //
         // GET: /Course/
 
         public ActionResult Index()
         {
+            var prevView = System.Web.HttpContext.Current.Request.UrlReferrer;
             var courses = db.Courses.Include(c => c.Facility);
+            if (prevView.AbsolutePath == "/Course/Create")
+            {
+                Session["FacilityId"] = 0;
+                Session["FacilityName"] = string.Empty;
+            }
             return View(courses.ToList());
         }
+
 
         //
         // GET: /Course/Details/5

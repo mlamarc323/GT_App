@@ -1,8 +1,14 @@
-﻿@model GT_App.Models.Course
+﻿@using GT_App.Models
+@model GT_App.Models.Course
 
 @{
     ViewBag.Title = "Create";
 }
+
+@{
+    var session = new SessionObj();
+}
+
 
 <h2>Create</h2>
 
@@ -12,12 +18,17 @@
 
     <fieldset>
         <legend>Course</legend>
-
-        <div>FacilityId: @Session["FacilityId"] - @Session["FacilityName"]</div>
-    <div>
-        <select id="ddlFacilities"></select>
-    </div>
-
+        @{
+            session.FacilityId = Convert.ToInt32(Session["FacilityId"]);
+        }
+        @if (session.FacilityId != 0) {
+            <div>FacilityId: @Session["FacilityId"] - @Session["FacilityName"]</div>
+        }
+        else
+        {
+            <div><select id="ddlFacilities"></select></div>
+        }
+        @*<div>FacilityId: @Session["FacilityId"] - @Session["FacilityName"]</div>*@
     <div class="editor-label">
             @Html.LabelFor(model => model.Name)
         </div>

@@ -12,6 +12,7 @@ namespace GT_App.Controllers
     public class FacilityController : Controller
     {
         private GolfStatTrackerEntities db = new GolfStatTrackerEntities();
+        //private SessionObj session = new SessionObj();
 
         //
         // GET: /Facility/
@@ -53,8 +54,8 @@ namespace GT_App.Controllers
             {
                 db.Facilities.Add(facility);
                 db.SaveChanges();
-                Session["facilityId"] = facility.FacilityId;
-                Session["facilityName"] = facility.Name;
+                Session["FacilityId"] = facility.FacilityId;
+                Session["FacilityName"] = facility.Name;
                 return RedirectToAction("Create", "Course");
             }
 
@@ -71,7 +72,7 @@ namespace GT_App.Controllers
             {
                 return HttpNotFound();
             }
-            Session["facilityId"] = facility.FacilityId;
+            Session["FacilityId"] = facility.FacilityId;
             return View(facility);
         }
 
@@ -86,7 +87,7 @@ namespace GT_App.Controllers
             {
                 db.Entry(facility).State = EntityState.Modified;
                 db.SaveChanges();
-                Session["facilityId"] = string.Empty;
+                Session["FacilityId"] = string.Empty;
                 return RedirectToAction("Index");
             }
             return View(facility);
@@ -102,7 +103,7 @@ namespace GT_App.Controllers
             {
                 return HttpNotFound();
             }
-            Session["facilityId"] = facility.FacilityId;
+            Session["FacilityId"] = facility.FacilityId;
             return View(facility);
         }
 
@@ -116,7 +117,7 @@ namespace GT_App.Controllers
             Facility facility = db.Facilities.Find(id);
             db.Facilities.Remove(facility);
             db.SaveChanges();
-            Session["facilityId"] = string.Empty;
+            Session["FacilityId"] = string.Empty;
             return RedirectToAction("Index");
         }
 
