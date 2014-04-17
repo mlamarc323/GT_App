@@ -40,6 +40,7 @@ namespace GT_App.Controllers
 
         public ActionResult Create()
         {
+            ViewBag.FacilityId = new SelectList(db.Facilities, "FacilityId", "Name");
             ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "Name");
             return View();
         }
@@ -53,8 +54,17 @@ namespace GT_App.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (Session["FacilityId"] != null || Convert.ToInt32(Session["FacilityId"]) != 0)
+                {
+                    hole.FacilityId = Convert.ToInt32(Session["FacilityId"]);
+                }
+                if (Session["CourseId"] != null || Convert.ToInt32(Session["CourseId"]) != 0)
+                {
+                    hole.CourseId = Convert.ToInt32(Session["CourseId"]);
+                }
                 db.Holes.Add(hole);
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 

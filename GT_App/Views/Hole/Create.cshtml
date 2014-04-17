@@ -1,7 +1,12 @@
-﻿@model GT_App.Models.Hole
+﻿@using GT_App.Models
+@model GT_App.Models.Hole
 
 @{
     ViewBag.Title = "Create";
+}
+
+@{
+    var session = new SessionObj();
 }
 
 <h2>Create</h2>
@@ -12,22 +17,36 @@
 
     <fieldset>
         <legend>Hole</legend>
+        @* Facility Dropdown / Label (from session)*@
+        @{
+            session.FacilityId = Convert.ToInt32(Session["FacilityId"]);
+        }
+        @if (session.FacilityId != 0)
+        {
+            @Html.LabelFor(model => model.FacilityId, @Session["FacilityId"])
+            <div>FacilityId: @Session["FacilityId"] - @Session["FacilityName"]</div>
+        }
+        else
+        {
+            @Html.DropDownListFor(model => model.FacilityId, (IEnumerable<SelectListItem>)ViewBag.FacilityId)
+        }
+        
+        <br/>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.FacilityId)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.FacilityId)
-            @Html.ValidationMessageFor(model => model.FacilityId)
-        </div>
+        @* Course Dropdown / Label (from session)*@
+        @{
+            session.CourseId = Convert.ToInt32(Session["CourseId"]);
+        }
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.CourseId, "Course")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("CourseId", String.Empty)
-            @Html.ValidationMessageFor(model => model.CourseId)
-        </div>
+        @if (session.CourseId != 0)
+        {
+            @Html.LabelFor(model => model.CourseId, @Session["CourseId"])
+            <div>FacilityId: @Session["CourseId"] - @Session["CourseName"]</div>
+        }
+        else
+        {
+            @Html.DropDownListFor(model => model.CourseId, (IEnumerable<SelectListItem>)ViewBag.CourseId)
+        }
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Number)
