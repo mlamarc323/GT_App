@@ -22,8 +22,8 @@ namespace GT_App.Controllers
             var prevView = System.Web.HttpContext.Current.Request.UrlReferrer;
             var courses = db.Courses.Include(c => c.Facility);
             
-            // Clears Session if creation of all relevent entities is stopped
-            if (prevView.AbsolutePath == "/Course/Create")
+            // Clears Session if previous page is NOT Facility/Create
+            if (prevView.AbsolutePath != "/Facility/Create")
             {
                 Session["FacilityId"] = 0;
                 Session["FacilityName"] = string.Empty;
@@ -69,12 +69,10 @@ namespace GT_App.Controllers
                 {
                     course.FacilityId = Convert.ToInt32(Session["FacilityId"]);
                 }
-                Session["FacilityId"] = course.FacilityId;
-                Session["FacilityName"] = course.Name;
-                Session["CourseId"] = course.CourseId;
-                Session["CourseName"] = course.Name;
                 db.Courses.Add(course);
                 db.SaveChanges();
+                Session["CourseId"] = course.CourseId;
+                Session["CourseName"] = course.Name;
                 return RedirectToAction("Create", "Hole");
             }
 
@@ -92,7 +90,6 @@ namespace GT_App.Controllers
             {
                 return HttpNotFound();
             }
-            Session["FacilityId"] = course.FacilityId;
             Session["CourseId"] = course.CourseId;
             ViewBag.FacilityId = new SelectList(db.Facilities, "FacilityId", "Name", course.FacilityId);
             return View(course);
@@ -109,7 +106,6 @@ namespace GT_App.Controllers
             {
                 db.Entry(course).State = EntityState.Modified;
                 db.SaveChanges();
-                Session["FacilityId"] = course.FacilityId;
                 Session["CourseId"] = course.CourseId;
                 return RedirectToAction("Index");
             }
@@ -127,7 +123,6 @@ namespace GT_App.Controllers
             {
                 return HttpNotFound();
             }
-            Session["FacilityId"] = course.FacilityId;
             Session["CourseId"] = course.CourseId;
             return View(course);
         }
@@ -142,7 +137,6 @@ namespace GT_App.Controllers
             Course course = db.Courses.Find(id);
             db.Courses.Remove(course);
             db.SaveChanges();
-            Session["FacilityId"] = course.FacilityId;
             Session["CourseId"] = course.CourseId;
             return RedirectToAction("Index");
         }
