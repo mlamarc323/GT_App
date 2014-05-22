@@ -218,6 +218,7 @@
       <DependentUpon>GT_AppModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\HoleViewModel.cs" />
     <Compile Include="ViewModel\RoundDetailViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -284,6 +285,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>GT_AppModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="js\Round.js" />
     <Content Include="Models\GT_AppModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>GT_AppModel.edmx</DependentUpon>

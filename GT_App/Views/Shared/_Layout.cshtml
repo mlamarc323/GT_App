@@ -69,8 +69,8 @@
                         <li>
                             <a href="#">Scores</a>
                             <ul>
-                                <li>@Html.ActionLink("Post Score", "Create", "RoundDetail")</li>
-                                <li>@Html.ActionLink("View All Scores", "Index", "RoundDetail")</li>
+                                <li>@Html.ActionLink("Post Score", "Create", "Round")</li>
+                                <li>@Html.ActionLink("View All Scores", "Index", "Round")</li>
                                 <li><a href="#">Search: Last 20</a></li>
                                 <li><a href="#">Search: Date Range</a></li>
                                 <li><a href="#">Latest</a></li>
@@ -138,9 +138,8 @@
         </div>
     </footer>
 
-    @*@Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/jqueryui")*@
     @RenderSection("scripts", required: false)
     <script src="~/js/course.js"></script>
+    <script src="~/js/Round.js"></script>
 </body>
 </html>

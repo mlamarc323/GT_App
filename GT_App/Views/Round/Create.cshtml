@@ -13,35 +13,47 @@
     <fieldset>
         <legend>Round</legend>
 
-        <div class="editor-label">
+        @*<div class="editor-label">
             @Html.LabelFor(model => model.GolferId)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.GolferId)
             @Html.ValidationMessageFor(model => model.GolferId)
-        </div>
+        </div>*@
 
         <div class="editor-label">
             @Html.LabelFor(model => model.FacilityId)
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.FacilityId)
-            @Html.ValidationMessageFor(model => model.FacilityId)
-        </div>
-
         <div class="editor-label">
-            @Html.LabelFor(model => model.CourseId)
+            @Html.DropDownListFor(model => model.FacilityId, (IEnumerable<SelectListItem>)ViewBag.FacilityId)
+        </div>
+        
+        <div class="editor-label">
+            @*@Html.LabelFor(model => model.Number_Of_Holes)*@
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.CourseId)
-            @Html.ValidationMessageFor(model => model.CourseId)
+            @Html.EditorFor(model => model.Number_Of_Holes) (Check if 18 Holes)
+            @Html.ValidationMessageFor(model => model.Number_Of_Holes)
+        </div>
+        
+        <div style="display:inline">
+            <div class="editor-label" style="display:inline">
+                @Html.LabelFor(model => model.CourseId)
+            </div>
+            <div class="editor-field">
+                @Html.DropDownListFor(model => model.CourseId, (IEnumerable<SelectListItem>)ViewBag.CourseId)
+            </div>
+            
+            <div class="editor-field" style="display:inline">
+                @Html.DropDownListFor(model => model.CourseId, (IEnumerable<SelectListItem>)ViewBag.CourseId, new { id = "ddlCourse2" })
+            </div>
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Date)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Date)
+            @Html.EditorFor(model => model.Date, new { style = "width: 70px" })
             @Html.ValidationMessageFor(model => model.Date)
         </div>
 
@@ -54,14 +66,6 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Number_Of_Holes)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Number_Of_Holes)
-            @Html.ValidationMessageFor(model => model.Number_Of_Holes)
-        </div>
-
-        <div class="editor-label">
             @Html.LabelFor(model => model.HBH_Stats)
         </div>
         <div class="editor-field">
@@ -69,13 +73,13 @@
             @Html.ValidationMessageFor(model => model.HBH_Stats)
         </div>
 
-        <div class="editor-label">
+        @*<div class="editor-label">
             @Html.LabelFor(model => model.TotalScore)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.TotalScore)
             @Html.ValidationMessageFor(model => model.TotalScore)
-        </div>
+        </div>*@
 
         <p>
             <input type="submit" value="Create" />

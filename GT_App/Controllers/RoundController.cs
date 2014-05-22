@@ -39,6 +39,10 @@ namespace GT_App.Controllers
 
         public ActionResult Create()
         {
+            ViewBag.FacilityId = new SelectList(db.Facilities, "FacilityId", "Name");
+            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "Name");
+            ViewBag.CourseId2 = new SelectList(db.Courses, "CourseId", "Name");
+            ViewBag.HoleId = new SelectList(db.Holes, "HoleId", "Number");
             return View();
         }
 
@@ -53,7 +57,7 @@ namespace GT_App.Controllers
             {
                 db.Rounds.Add(round);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "RoundDetail");
             }
 
             return View(round);
